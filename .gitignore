@@ -1,0 +1,8 @@
+auto-save-list
+elpa
+eshell
+.cache
+*~
+session.*
+transient
+tramp
