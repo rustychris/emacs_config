@@ -228,6 +228,7 @@ It should return nil if there's no region to be highlighted."
 (defvar python-cell-mode-map
   (let ((map (make-sparse-keymap)))
     (define-key map [(control return)] 'python-shell-send-cell)
+    (define-key map (kbd "<f33>") 'python-shell-send-cell)
     (define-key map [(control down)] 'python-forward-cell)
     (define-key map [(control up)] 'python-backward-cell)
     (define-key map [(shift return)] 'python-shell-send-cell-and-forward)

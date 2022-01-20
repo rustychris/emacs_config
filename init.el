@@ -11,7 +11,6 @@
 (setq display-time-echo-area t)
 (setq dired-use-ls-dired nil)
 (menu-bar-mode -1)
-(tool-bar-mode -1)
 	
 (setq-default ispell-program-name "aspell")
 
@@ -153,7 +152,6 @@
 
 (setq truncate-partial-width-windows nil)
 (setq global-font-lock-mode 't)
-(set-scroll-bar-mode nil)
 
 (setq revert-without-query '(".*"))
 (global-set-key [f12] 'revert-buffer)
@@ -271,4 +269,13 @@ Version 2015-08-08"
 ; that returns "ipython --simple-prompt --matplotlib=qt"
 ; (run-python "/opt/anaconda3/bin/ipython --simple-prompt")
 (load-library "xdg-open.el")
+
+;; These are not defined when running no-x emacs
+;; well, tool-bar-mode gets defined as a variable by c-mode,
+;; but with nil value when no-x
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)
+      (set-scroll-bar-mode nil)))
+
 
