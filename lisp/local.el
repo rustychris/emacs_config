@@ -17,18 +17,29 @@
       ))
 
 (if (string-match "w64" system-configuration)
-    (setq python-shell-interpreter "C:\\Users\\rusty\\src\\ipython-general.bat"
-          python-shell-interpreter-args "")
-
+    (progn
+      (setq ; python-shell-interpreter "C:\\Users\\rusty\\src\\ipython-general.bat"
+                                        ; python-shell-interpreter-args ""
+       python-shell-interpreter "jupyter"
+       python-shell-interpreter-args "console --simple-prompt"
+       magit-git-executable "C:\\Users\\rusty\\Miniconda3\\Library\\bin\\git.exe"
+       grep-command "\"C:\\Program Files (x86)\\GnuWin32\\bin\\grep.exe\" -nH -e "
+       exec-path (cons "C:/Program Files (x86)/GnuWin32/bin" exec-path)
+       ;ediff-cmp-program "\"C:\\Program Files (x86)\\GnuWin32\\bin\\cmp.exe\""
+       ;ediff-diff-program "\"C:\\Program Files (x86)\\GnuWin32\\bin\\diff.exe\""
+       diff-command "\"C:\\Program Files (x86)\\GnuWin32\\bin\\diff.exe\"")
+      (setenv "PYTHONPATH" "C:\\Users\\rusty\\src\\stompy")))
+  
 ;; (setq python-shell-interpreter "C:\\Users\\rusty\\Miniconda3\\envs\\general\\Scripts\\jupyter"
 ;;       python-shell-interpreter-args "console --simple-prompt")
 
-(defun run-python-cws ()
+(defun run-python-ipython ()
   "Run a python shell on cws-linuxmodeling.  Currently this
    only works when invoked from a remote python buffer."
   (interactive)
-  (let ((python-shell-interpreter "/opt/anaconda3/bin/ipython")
-        (python-shell-interpreter-args "--simple-prompt --matplotlib=agg"))
+  (let (;(python-shell-interpreter "C:\\Users\\rusty\\Miniconda3\\envs\\general\\Scripts\\ipython.exe")
+        (python-shell-interpreter "C:\\Users\\rusty\\src\\ipython-wx.bat")
+        (python-shell-interpreter-args ""))
     (run-python)))
 
 
